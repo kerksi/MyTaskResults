@@ -4,9 +4,9 @@ USE CircusAnimals;
 CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
 Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
 CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
-Name Varchar(30) NOT NULL, Age integer);
+Name Varchar(30) NOT NULL, Age number);
 CREATE TABLE Tigers( AnimalID Integer NOT NULL PRIMARY KEY, 
-Name Varchar(30) NOT NULL, Age integer);
+Name Varchar(30) NOT NULL, Age number);
 
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
 VALUES (6101, 'Bear', 'Shapito');
@@ -53,7 +53,7 @@ VALUES (7032, 'Rawr', 2);
 
 /* Find the IDs of all Lux circus animals. Output: AnimalID */
 SELECT AnimalID from Circuses 
-WHERE Type = 'Lux' ;
+WHERE Animal = 'Lux' ;
 
 /* Find all 1 year old tigers. Output: AnimalID, Name, Age */
 SELECT AnimalID, Name, Age
@@ -74,7 +74,7 @@ WHERE Name LIKE '%y';
 SELECT Circuses.AnimalID, Tigers.Name
 FROM Circuses JOIN Tigers
 ON Circuses.AnimalID = Tigers.AnimalID
-WHERE Circuses.CircusName = 'Shapito' and Circuses.Type = 'Tiger';
+WHERE Circuses.CircusName = 'Shapito' and Circuses.Animal = 'Tiger';
 
 /* Find animals of the age from 1 to 5.  */
 SELECT AnimalID
@@ -92,7 +92,7 @@ FROM Bears;
 /* Find the circuses having at least 2 bears. Output: CircusName, Number of bears */
 SELECT Circuses.CircusName, COUNT(Circuses.AnimalID) as NumberOfBears
 FROM Circuses, Bears
-WHERE Circuses.Type = 'Bear'
+WHERE Circuses.Animal = 'Bear'
 GROUP BY Circuses.CircusName
 HAVING COUNT(Circuses.AnimalID)>=2;
 
