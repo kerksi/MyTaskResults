@@ -4,9 +4,9 @@ USE CircusAnimals;
 CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
 Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
 CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
-Name Varchar(30) NOT NULL, Age number);
+Name Varchar(30) NOT NULL, Age integer);
 CREATE TABLE Tigers( AnimalID Integer NOT NULL PRIMARY KEY, 
-Name Varchar(30) NOT NULL, Age number);
+Name Varchar(30) NOT NULL, Age integer);
 
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
 VALUES (6101, 'Bear', 'Shapito');
