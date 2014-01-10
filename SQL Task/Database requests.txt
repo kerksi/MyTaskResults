@@ -1,0 +1,103 @@
+CREATE DATABASE CircusAnimals;
+
+USE CircusAnimals;
+CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
+Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
+CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
+Name Varchar(30) NOT NULL, Age number);
+CREATE TABLE Tigers( AnimalID Integer NOT NULL PRIMARY KEY, 
+Name Varchar(30) NOT NULL, Age number);
+
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (6101, 'Bear', 'Shapito');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (3456, 'Tiger', 'Lux');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (3567, 'Tiger', 'Wow');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (3657, 'Bear', 'Shapito');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (5678, 'Bear', 'Wow');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (6787, 'Tiger', 'Lux');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (3456, 'Bear', 'Shapito');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (3690, 'Bear', 'Lux');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (2057, 'Tiger', 'Wow');
+INSERT INTO Circuses (AnimalID, Animal, CircusName)
+VALUES (7032, 'Tiger', 'Shapito');
+
+INSERT INTO Bears (AnimalID, Name, Age)
+VALUES (6101, 'Masha', 7);
+INSERT INTO Bears (AnimalID, Name, Age)
+VALUES (3657, 'Misha', 8);
+INSERT INTO Bears (AnimalID, Name, Age)
+VALUES (5678, 'Teddy', 5);
+INSERT INTO Bears (AnimalID, Name, Age)
+VALUES (3456, 'Happy', 4);
+INSERT INTO Bears (AnimalID, Name, Age)
+VALUES (3690, 'Sandy', 9);
+
+INSERT INTO Tigers (AnimalID, Name, Age)
+VALUES (6101, 'Rex', 5);
+INSERT INTO Tigers (AnimalID, Name, Age)
+VALUES (3567, 'Galla', 4);
+INSERT INTO Tigers (AnimalID, Name, Age)
+VALUES (6787, 'Strong', 1);
+INSERT INTO Tigers (AnimalID, Name, Age)
+VALUES (2057, 'Goofy', 1);
+INSERT INTO Tigers (AnimalID, Name, Age)
+VALUES (7032, 'Rawr', 2);
+
+/* Find the IDs of all Lux circus animals. Output: AnimalID */
+SELECT AnimalID from Circuses 
+WHERE Type = 'Lux' ;
+
+/* Find all 1 year old tigers. Output: AnimalID, Name, Age */
+SELECT AnimalID, Name, Age
+FROM Tigers 
+WHERE Age = 1 ;
+
+/* Find the oldest bear. Output: AnimalID, Name, Age */
+SELECT AnimalID, Name, MAX(Age) as Age
+FROM Bears
+GROUP BY AnimalID, Name ;
+
+/* Find the bears' names having letter "y" on the end */
+SELECT AnimalHD, Name
+FROM Bears
+WHERE Name LIKE '%y';
+
+/* Find tigers performing in Shapito circus. Output: AnimalID, Name  */
+SELECT Circuses.AnimalID, Tigers.Name
+FROM Circuses JOIN Tigers
+ON Circuses.AnimalID = Tigers.AnimalID
+WHERE Circuses.CircusName = 'Shapito' and Circuses.Type = 'Tiger';
+
+/* Find animals of the age from 1 to 5.  */
+SELECT AnimalID
+FROM Bears
+WHERE Age BETWEEN 1 AND 5
+UNION
+SELECT AnimalID
+FROM Tigers
+WHERE Age BETWEEN 1 AND 5;
+
+/* Count bears owned by circuses. Output : Number of bears */
+SELECT COUNT(AnimalID) as NumberOfBears
+FROM Bears;
+
+/* Find the circuses having at least 2 bears. Output: CircusName, Number of bears */
+SELECT Circuses.CircusName, COUNT(Circuses.AnimalID) as NumberOfBears
+FROM Circuses, Bears
+WHERE Circuses.Type = 'Bear'
+GROUP BY Circuses.CircusName
+HAVING COUNT(Circuses.AnimalID)>=2;
+
+
+
+
+
+
