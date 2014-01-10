@@ -1,6 +1,5 @@
 CREATE DATABASE CircusAnimals;
 
-USE CircusAnimals;
 CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
 Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
 CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
@@ -66,7 +65,7 @@ FROM Bears
 GROUP BY AnimalID, Name ;
 
 /* Find the bears' names having letter "y" on the end */
-SELECT AnimalHD, Name
+SELECT AnimalID, Name
 FROM Bears
 WHERE Name LIKE '%y';
 
