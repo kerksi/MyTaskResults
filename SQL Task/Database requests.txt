@@ -1,5 +1,8 @@
 CREATE DATABASE CircusAnimals;
 
+ALTER DATABASE CircusAnimals 
+SET COMPATIBILITY_LEVEL = 110;
+
 CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
 Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
 CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
@@ -20,7 +23,7 @@ VALUES (5678, 'Bear', 'Wow');
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
 VALUES (6787, 'Tiger', 'Lux');
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
-VALUES (3456, 'Bear', 'Shapito');
+VALUES (3977, 'Bear', 'Shapito');
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
 VALUES (3690, 'Bear', 'Lux');
 INSERT INTO Circuses (AnimalID, Animal, CircusName)
