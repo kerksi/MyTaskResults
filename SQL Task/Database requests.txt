@@ -1,8 +1,5 @@
 CREATE DATABASE CircusAnimals;
 
-ALTER DATABASE CircusAnimals 
-SET COMPATIBILITY_LEVEL = 110;
-
 CREATE TABLE Circuses( AnimalID Integer NOT NULL PRIMARY KEY,
 Animal Varchar(15) NOT NULL, CircusName Varchar(30) NOT NULL);
 CREATE TABLE Bears( AnimalID Integer NOT NULL PRIMARY KEY,
